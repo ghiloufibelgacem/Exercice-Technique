@@ -1,0 +1,25 @@
+<div class="container">
+  <form #grille_size_form ="ngForm" 
+        (ngSubmit) = "on_submit_grille_size(grille_size_form)">
+    <mat-form-field>
+      <input matInput name="grille_size" ngModel>
+    </mat-form-field>
+    <button mat-flat-button color="primary">Load</button>
+  </form>
+</div>
+<div class="grille">
+  <svg xmlns="http://www.w3.org/2000/svg"
+       xmlns:xlink="http://www.w3.org/1999/xlink">
+       <g *ngFor = "let grille_item of grille_items">
+        <rect [attr.x] = "grille_item.position_x" [attr.y] = "grille_item.position_y"
+              [attr.fill] = "grille_item.fillColor"
+              rx="4" ry="4" height="24" width="24"/>
+        <text [attr.x] = "grille_item.position_x + 12" 
+              [attr.y] = "grille_item.position_y + 12"
+              dominant-baseline="middle" text-anchor="middle"
+              font-size="14">
+         {{grille_item.item_integer}}
+        </text>
+       </g>
+  </svg>
+</div>
